@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 
 class Home extends StatefulWidget {
@@ -11,13 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class HomePageState extends State<Home> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +23,26 @@ class HomePageState extends State<Home> {
         child: new ListView(
           children: <Widget>[
             new DrawerHeader(
-                child: new Image(
-                    image: null
-                )
+              margin: new EdgeInsets.only(left: 0.0, right: 0.0, bottom: 10.0, top:0.0),
+              padding: new EdgeInsets.only(left: 0.0, right: 0.0, top:0.0),
+              decoration: new BoxDecoration(
+                color: new Color(Colors.orange.value),
+              ),
+              child: new Image(
+                image: new AssetImage('assets/rick.jpeg')
+              ),
+            ),
+            new ListTile(
+              title: new Text("Rick et Morthy"),
+              onTap: (){
+                Navigator.of(context).pushNamed('/rick');
+              },
+            ),
+            new ListTile(
+              title: new Text("Asterix et Obélix"),
+              onTap: () {
+                Navigator.pop(context);
+              },
             )
           ],
         )
@@ -40,13 +51,7 @@ class HomePageState extends State<Home> {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Text(
-              'You have pushed the button this many times:',
-            ),
-            new Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
+
           ],
         ),
       ),
